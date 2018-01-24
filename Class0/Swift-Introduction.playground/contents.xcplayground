@@ -3,5 +3,6 @@
     <pages>
         <page name='Hello Swift'/>
         <page name='Variables and Constants'/>
+        <page name='Functions'/>
     </pages>
 </playground>
