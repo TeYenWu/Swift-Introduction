@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios'>
+<playground version='6.0' target-platform='macos' display-mode='raw'>
     <pages>
         <page name='Hello Swift'/>
         <page name='Variables and Constants'/>
         <page name='Functions'/>
+        <page name='Control Flow'/>
+        <page name='Collections'/>
+        <page name='Optionals and Error Handling'/>
     </pages>
 </playground>
