@@ -534,15 +534,17 @@ axis(of: (0, 0))
 
 /*:
  
- This above `switch` statement **does not** have a default case.
+ (Self-Reading) This above `switch` statement **does not** have a default case.
  
  The final case, `case let (x, y)`, declares a tuple of two placeholder
  constants that can match any value. Because `point` is always
  a tuple of two values, this case matches all possible remaining
  values, and a default case is not needed to make the switch statement exhaustive.
  
- > Try to move the `case (0, 0)` to after `case let (x, y)` to see what happens.
+ Q:> Try to move the `case (0, 0)` to after `case let (x, y)` to see what happens.
+ A:>
  
+ >
  */
 
 

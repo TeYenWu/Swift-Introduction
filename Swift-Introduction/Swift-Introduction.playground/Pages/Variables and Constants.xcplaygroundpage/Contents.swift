@@ -28,7 +28,7 @@ to change its value later.
 
 // A constant named "answer", and the value `42.0` is assgined when declaring it.
 let answer = 42.0
-//answer = 44  // Try to uncomment this line to see the error message.
+//answer = 44  // Cannot assign to value: 'answer' is a 'let' constant.
 // A variable called "year", and is initialized with the value `2016`.
 var year = 2016
 // A constant called "name" is declared with an initial value `"Peter"`.

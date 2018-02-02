@@ -60,7 +60,7 @@ func subtract(x: Int, y: Int) -> Int {
     return x - y
 }
 let answer = subtract(x: 50, y: 8)
-//: > Try to add a line after the `return` statement in `subtract(x:y:)` function. See what Xcode says
+
 /*:
  Functions could return multiple values as results via tuples
  */
@@ -164,8 +164,8 @@ func convertToCelsius(from fahrenheit: Double) -> Double {
     return (fahrenheit - meltingPointInFahrenheit) * factor
 }
 convertToCelsius(from: 68)
-//fahrenheit  // Try to uncomment this line to see what Xcode yields
-//factor  // Try to uncomment this line to see what Xcode yields
+//fahrenheit  // Use of unresolved identifier 'fahrenheit'
+//factor  //  Use of unresolved identifier 'factor'
 
 //: --------------------------------------------------------------------------------------------------------------------
 /*:
@@ -201,12 +201,6 @@ average(1, 2, 3, 4, 5)
  define that parameter as an in-out parameter instead.
  */
 
-// Try to uncomment following function to see the error message from Xcode
-//func broken_swap(_ a: Int, _ b: Int) {
-//    let temporaryA = a
-//    a = b
-//    b = temporaryA
-//}
 func swapTwoNumbers(_ a: inout Int, _ b: inout Int) {
     let temporaryA = a
     a = b
@@ -217,6 +211,14 @@ var secondInt = 2000
 swapTwoNumbers(&firstInt, &secondInt)
 firstInt
 secondInt
+
+// Q:> Try to uncomment following function to see the error message from Xcode
+//func broken_swap(_ a: Int, _ b: Int) {
+//    let temporaryA = a
+//    a = b
+//    b = temporaryA
+//}
+// A:>
 
 //: --------------------------------------------------------------------------------------------------------------------
 /*:
@@ -242,23 +244,22 @@ swapTwoNumbers(&firstDouble, &secondDouble)
  
  Generics provides the ability to have a single implementation that works for all possible types.
  
- See `Generic` page for more detail information
+ Q:> Try to implement 'mySwap' function with 'Generics'
  */
 
-func mySwap<T>(_ a: inout T, _ b: inout T) {
-    let tempA = a
-    a = b
-    b = tempA
+func mySwap() {
+
 }
+
 var firstPeople = "Peter"
 var secondPeople = "Rebecca"
-mySwap(&firstPeople, &secondPeople)
+//mySwap(&firstPeople, &secondPeople) // Uncomment this line to check the functionality
 firstPeople
 secondPeople
 
 var firstPrice = 1950
 var secondPrice = 2450
-mySwap(&firstPrice, &secondPrice)
+//mySwap(&firstPrice, &secondPrice) // Uncomment this line to check the functionality
 firstPrice
 secondPrice
 
