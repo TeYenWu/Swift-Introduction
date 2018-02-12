@@ -7,5 +7,7 @@
         <page name='Control Flow'/>
         <page name='Collections'/>
         <page name='Optionals and Error Handling'/>
+        <page name='Enum'/>
+        <page name='Struct and Class'/>
     </pages>
 </playground>

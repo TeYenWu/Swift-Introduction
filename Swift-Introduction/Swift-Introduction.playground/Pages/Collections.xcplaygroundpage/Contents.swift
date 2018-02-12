@@ -86,7 +86,7 @@ japaneseFoods.insert("Rib eye steak", at: 2)
 let indexOf肉骨茶 = japaneseFoods.index(of: "肉骨茶")
 let indexOfRibEyeSteak = japaneseFoods.index(of: "Rib eye steak")!
 // Use "option+click" to see the type of above two constants.
-let indexOfPhở = japaneseFoods.index(of: "Phở")! //
+//let indexOfPhở = japaneseFoods.index(of: "Phở")! //
 
 japaneseFoods.remove(at: indexOfRibEyeSteak)
 japaneseFoods
