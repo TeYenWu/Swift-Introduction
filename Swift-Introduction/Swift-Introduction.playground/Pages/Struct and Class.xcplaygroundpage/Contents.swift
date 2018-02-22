@@ -245,7 +245,7 @@ fraction1.denominator = 3
 fraction2.denominator  // Still 2, because Fraction is a struct, value type.
 
 //: --------------------------------------------------------------------------------------------------------------------
-//: # Advanced Example
+//: # (Self-Reading) Advanced Example
 //: --------------------------------------------------------------------------------------------------------------------
 
 class LinkedListNode<Element> {

@@ -34,7 +34,6 @@ let convertedNumber2 = Int(possibleNumber2)
 var concreteNumber: Int = 42
 var optionalNumber: Int? = 42
 optionalNumber = nil
-//concreteNumber = nil  // Try to uncomment this line to see what Xcode yields.
 
 func divide(_ dividend: Int, by divisor: Int) -> (quotient: Int, remainder: Int)? {
     // We cannot perform division when the `divisor` is '0',
@@ -75,18 +74,6 @@ convertToNumber(from: "A", default: -1)
 
 /*:
  
- You should always check whether the value is nil or not before force unwrapping an optional.
- 
- */
-
-let answerString = "42"
-let forcedUnwrappingNumber1 = Int(answerString)!
-let helloWorldString = "Hello World!"
-//let forcedUnwrappingNumber2 = Int(helloWorldString)!
-// Try to uncomment the above line to see what happened.
-
-/*:
- 
  ### Optional binding
  
  You use optional binding to find out whether an optional contains a value,
@@ -98,26 +85,8 @@ let helloWorldString = "Hello World!"
  
  */
 
-func parseInt1(_ string: String) -> (isInteger: Bool, value: Int) {
-    let possibleNumber = Int(string)
-    if possibleNumber != nil {
-        let actualNumber = possibleNumber!
-        return (true, actualNumber)
-    } else {
-        return (false, 0)
-    }
-}
-
-/*:
- 
- The two lines for checking nil and unwrapping could be merged as one line by
- **optional binding**, like:
- 
- */
-
 func parseInt(_ string: String) -> (isInteger: Bool, value: Int) {
-    let possibleNumber = Int(string)
-    if let actualNumber = possibleNumber {
+    if case let actualNumber? = Int(string) {
         return (true, actualNumber)
     } else {
         return (false, 0)
@@ -128,41 +97,9 @@ parseInt("XD")
 
 /*:
  
- The `if` statement in `parseInt(_:)` could be read as
- 
- “If the optional Int returned by `Int(possibleNumber)` contains a value,
- set a new constant called `actualNumber` to the value contained in the optional.”
- 
- > Try to "option+click" on `possibleNumber` and `actualNumber` to see their types.
- 
- Also, we use `guard` for optional binding too:
- 
- */
-
-func squareFloat(_ string: String) -> String? {
-    guard let floatNumber = Float(string) else {
-        return nil
-    }
-    return "\(floatNumber * floatNumber)"
-}
-squareFloat("16.0")
-squareFloat("A")
-
-/*:
- 
  The `optional binding` could be chained together, like:
  
  */
-
-func getAnswer(_ optionalInput: String?) -> String? {
-    if let concreteString = optionalInput, let answer = Int(concreteString) {
-        return "The answer is \(answer)."
-    } else {
-        return nil
-    }
-}
-let optionalString: String? = "42"
-getAnswer(optionalString)
 
 func stringPower(base: String, exponent exp: String) -> String? {
     guard let baseNumber = Int(base), let expNumber = Int(exp) else {
@@ -176,6 +113,22 @@ func stringPower(base: String, exponent exp: String) -> String? {
 }
 stringPower(base: "2", exponent: "5")
 stringPower(base: "2", exponent: "B")
+
+/*:
+ 
+ ### Optional Chaining
+ 
+To safely access the properties and methods of a wrapped instance, use the postfix optional chaining operator (postfix ?). The following example uses optional chaining to access the hasSuffix(_:) method on a String? instance.
+ 
+*/
+
+let imagePaths = ["star": "/glyphs/star.png",
+                  "portrait": "/images/content/portrait.jpg",
+                  "spacer": "/images/shared/spacer.gif"]
+
+let isPNG = imagePaths["star"]?.hasSuffix(".png")
+let isJPG = imagePaths["starwar"]?.hasSuffix(".jpg")
+//: > Try to "option+click" on `isJPG` to see their types.
 
 /*:
  
@@ -194,6 +147,24 @@ let whateverNumber1 = Int(someString1) ?? -1
 let whateverNumber2 = Int(someString1) ?? 0
 let whateverNumber3 = Int(someString2) ?? -1
 //: > Try to "option+click" on `whateverNumber1` and `whateverNumber2` to see their types.
+
+/*:
+ 
+ ### Optional Pattern
+ 
+ An optional pattern matches values wrapped in a some(Wrapped) case of an Optional<Wrapped> enumeration. Optional patterns consist of an identifier pattern followed immediately by a question mark and appear in the same places as enumeration case patterns.
+ 
+ The optional pattern provides a convenient way to iterate over an array of optional values in a for-in statement, executing the body of the loop only for non-nil elements.
+ */
+
+let arrayOfOptionalInts: [Int?] = [nil, 2, 3, nil, 5]
+// Match only non-nil values.
+for case let number? in arrayOfOptionalInts {
+    print("Found a \(number)")
+}
+// Found a 2
+// Found a 3
+// Found a 5
 
 /*:
  
@@ -312,86 +283,7 @@ remainder3
 //: --------------------------------------------------------------------------------------------------------------------
 /*:
  
- ## Some use case
- 
- Assume we have a vending machine, with following goods:
- 
- */
-
-typealias Item = (price: Int, count: Int)
-var inventory = [
-    "Candy Bar": Item(price: 12, count: 7),
-    "Chips": Item(price: 10, count: 4),
-    "Cookies": Item(price: 5, count: 2),
-    "Pretzels": Item(price: 7, count: 11)
-]
-
-/*:
- 
- And the vend function is:
- 
- */
-
-enum VendingMachineError: Error {
-    case invalidSelection
-    case insufficientFunds(coinsNeeded: Int)
-    case outOfStock
-}
-
-func vend(itemNamed name: String, withCoins coins: Int) throws -> (name: String, change: Int) {
-    // Check this is a valid item
-    guard let item = inventory[name] else {
-        throw VendingMachineError.invalidSelection
-    }
-    // Check the item is still available
-    guard item.count > 0 else {
-        throw VendingMachineError.outOfStock
-    }
-    // Check the coins are enough
-    guard item.price <= coins else {
-        throw VendingMachineError.insufficientFunds(coinsNeeded: item.price - coins)
-    }
-    
-    // Decrease the count of purchased item
-    var newItem = item
-    newItem.count -= 1
-    inventory[name] = newItem
-    
-    // Return item name and change
-    let change = coins - item.price
-    return (name, change)
-}
-
-/*:
- 
- Let's buy something
- 
- */
-func buy(_ name: String, withCoins coins: Int) -> String {
-    do {
-        let (_, change) = try vend(itemNamed: name, withCoins: coins)
-        return "Purchased \(name) with \(change) coins as change."
-    } catch VendingMachineError.invalidSelection {
-        return "Cannot buy \(name). There's no such item to buy."
-    } catch VendingMachineError.insufficientFunds(let coinsNeeded) {
-        return "Cannot buy \(name). You need extra \(coinsNeeded) coins to buy."
-    } catch VendingMachineError.outOfStock {
-        return "Cannot buy \(name). Sold out."
-    } catch {
-        return "Unknown error."
-    }
-}
-buy("Candy Bar", withCoins: 20)
-buy("Cookies", withCoins: 2)
-buy("Banana", withCoins: 20)
-buy("Cookies", withCoins: 6)
-buy("Cookies", withCoins: 15)
-buy("Cookies", withCoins: 7)
-
-//: --------------------------------------------------------------------------------------------------------------------
-/*:
- 
- ## Optionals vs Throwing Errors
+ ## (Self-Reading)Optionals vs Throwing Errors
  
  In performance, optionals are faster than throwing errors. Also the Swift prefers optionals over
  throwing errors, like when handling abset keys of a dictionary.

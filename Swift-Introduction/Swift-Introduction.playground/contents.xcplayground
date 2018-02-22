@@ -9,5 +9,7 @@
         <page name='Optionals and Error Handling'/>
         <page name='Enum'/>
         <page name='Struct and Class'/>
+        <page name='Extension'/>
+        <page name='Protocols'/>
     </pages>
 </playground>
