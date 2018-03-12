@@ -238,7 +238,54 @@ var firstDouble = 42.0
 var secondDouble = 24.0
 swapTwoNumbers(&firstDouble, &secondDouble)
 
+
+
 //: --------------------------------------------------------------------------------------------------------------------
+/*:
+ 
+ ## Function Types
+ 
+ Every function has a specific function type, made up of the parameter types and the return type of the function.
+ 
+ */
+
+/*:
+ 
+ 'add' and 'multiply' functions take two `Int` values, and return an `Int` value. So the type of these functions is
+ `(Int, Int) -> Int`.
+ 
+ This can be read as:
+ “A function type that has two parameters, both of type Int, and that returns a value of type Int.”
+ 
+ */
+var someArithmeticFunction: (Int, Int) -> Int = add
+someArithmeticFunction(1, 2)
+
+someArithmeticFunction = multiply
+someArithmeticFunction(1, 2)
+
+/*:
+ 
+ ### Use function as arguments
+ 
+ */
+func reduce(numbers: [Int], reducer: (Int, Int) -> Int) -> Int? {
+    guard !numbers.isEmpty else {
+        return nil
+    }
+    // This array is not empty, so it’s okay to use `!` to get the first element as result.
+    var result = numbers.first!
+    // Then, enumerate the rest part of this array
+    for number in numbers[1..<numbers.count] {
+        result = reducer(result, number)
+    }
+    return result
+}
+reduce(numbers: [1, 2, 3, 4], reducer: add(x:y:))
+reduce(numbers: [1, 2, 3, 4], reducer: multiply(x:y:))
+reduce(numbers: [2, 3, 4, 5], reducer: +)
+//: > Yes, operatos are functions in Swift.
+
 /*:
  
  ### Nested Functions
@@ -264,30 +311,6 @@ while currentValue != 0 {
 }
 print("zero!")
 
-//: --------------------------------------------------------------------------------------------------------------------
-/*:
- ### (Self-Reading) Arguments with Generic Types
- 
- Generics provides the ability to have a single implementation that works for all possible types.
- 
- Q:> Try to implement 'mySwap' function with 'Generics'
- */
-
-func mySwap() {
-
-}
-
-var firstPeople = "Peter"
-var secondPeople = "Rebecca"
-//mySwap(&firstPeople, &secondPeople) // Uncomment this line to check the functionality
-firstPeople
-secondPeople
-
-var firstPrice = 1950
-var secondPrice = 2450
-//mySwap(&firstPrice, &secondPrice) // Uncomment this line to check the functionality
-firstPrice
-secondPrice
 
 //: ---
 //:
