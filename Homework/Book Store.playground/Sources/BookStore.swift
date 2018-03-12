@@ -25,13 +25,20 @@ public class BookStore {
 
     public func setDataSource(bookGetter: ((Int) -> Book?)) {
         var books = [Book]()
+        var totalBookPrice = 0.0
+        var authors: [String] = []
         
         // Get book from bookGetter
         
         // Sort books
+        
+        // Retreive authors and prices
     
         //assign value to property
         self.books = books
+        self.totalBookPrice = totalBookPrice
+        self.authors = authors
+        
     }
 
 }

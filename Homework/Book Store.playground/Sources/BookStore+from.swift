@@ -5,7 +5,7 @@ public extension BookStore {
         let bookStore = BookStore()
 
         func getBook(bookIndex: Int) -> Book?{
-          return nil
+            return nil
         }
         
         // Get books to buy

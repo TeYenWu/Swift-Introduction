@@ -7,31 +7,37 @@
  The shopping cart shows authors and books the user wants to buy.
  It shows the total price in the title bar.
  
- For example, I want to buy following books. Each books is represented by 
+ For example, I want to buy following books. Each book is represented by
  a dictionary with 3 keys: `author`, `title`, and `price`.
  
  > You have to open the **Timeline view** if you cannot see the shopping cart.
  
  */
+import Foundation
 
-let books: [[String: String]] = [
-    ["author": "J.K. Rowling", "title": "Harry Potter and the Sorcerer's Stone", "price": "10.99"],
-    ["author": "村上春樹", "title": "1Q84: Books 1 & 2", "price": "6.99"],
-    ["author": "Dan Brown", "title": "Digital Fortress", "price": "9.99"],
-    ["author": "J.K. Rowling", "title": "Harry Potter and the Goblet of Fire", "price": "12.99"],
-     ["author": "Dan Brown", "title": "Deception Point", "price": "17.00"],
-    ["author": "J.K. Rowling", "title": "Harry Potter and the Deathly Hallows", "price": "14.99"],
-    ["author": "村上春樹", "title": "1Q84: Books 3", "price": "5.99"],
-]
+// Throw errors if invalid URL and bookData
+func getBookData(urlText: String) throws -> [[String: String]]{
+    guard let url = URL.init(string: urlText) else { return [] }
+    let data = try Data.init(contentsOf: url)
+    let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
+    guard let bookData: [[String : String]] = jsonData as? [[String : String]] else { return [] }
+    return bookData
+}
 
-/*:
- 
- And, let's show the book store shopping cart:
- 
- */
+do {
+    
+    let books: [[String: String]] = try getBookData(urlText: "http://bit.do/eaaqu")
+    
+    /*:
+     
+     And, let's show the book store shopping cart:
+     
+     */
 
-var bookStore = BookStore.from(books)
-bookStore.showInPlayground()
+    let bookStore = BookStore.from(books)
+    bookStore.showInPlayground()
+}
+// Do error handling for invalid URL and bookData
 
 //: ---
 //: [Next ->](@next)
