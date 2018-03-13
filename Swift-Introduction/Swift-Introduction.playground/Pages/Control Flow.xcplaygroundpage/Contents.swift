@@ -96,7 +96,7 @@ print("====== Heat ======\n\n")
 /*:
  
  ### `continue`
- (Self-Reading)
+
  The `continue` statement tells a loop to stop what it is doing and start again at the beginning
  of the next iteration through the loop. It says “I am done with the current loop iteration”
  without leaving the loop altogether.
@@ -215,7 +215,7 @@ for position in find(2, in: grid, onlyFirst: true) {
  
  ### `if`
 
-   (Self-Reading) In its simplest form, the if statement has a single `if` condition. It executes a set of statements
+   In its simplest form, the if statement has a single `if` condition. It executes a set of statements
  only if that condition is true.
  
  */
@@ -224,7 +224,7 @@ if 5 > 2 {
     print("5 is bigger than 2.")
 }
 /*:
-  (Self-Reading) The if statement can provide an alternative set of statements, known as an _else clause_,
+  The if statement can provide an alternative set of statements, known as an _else clause_,
  for situations when the `if` condition is false. These statements are indicated by the `else` keyword.
  
  */
@@ -291,7 +291,7 @@ print("====== Divide ======\n\n")
 
 /*:
  
-   (Self-Reading)Without using the `guard` statement, the function implementation would be like:
+   Without using the `guard` statement, the function implementation would be like:
  
  */
 func badDivide1(_ x: Int, by y: Int) -> (quotient: Int, remainder: Int) {
@@ -450,7 +450,7 @@ describe(13)
 
 /*:
  
-(Self-Reading)Swift's switch-case also supports **Interval Matching**.
+Swift's switch-case also supports **Interval Matching**.
  
  */
 func feeling(of temperature: Int) -> String {
@@ -534,7 +534,7 @@ axis(of: (0, 0))
 
 /*:
  
- (Self-Reading) This above `switch` statement **does not** have a default case.
+ This above `switch` statement **does not** have a default case.
  
  The final case, `case let (x, y)`, declares a tuple of two placeholder
  constants that can match any value. Because `point` is always

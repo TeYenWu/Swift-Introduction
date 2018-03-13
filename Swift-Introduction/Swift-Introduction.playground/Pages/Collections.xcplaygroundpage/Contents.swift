@@ -113,7 +113,7 @@ for (index, taiwaneseFood) in taiwaneseFoods.enumerated() {
 
 /*:
  
- (Self-Reading) In Swift, we have a convention that functions and methods which alter the data structure itself (in place)
+ In Swift, we have a convention that functions and methods which alter the data structure itself (in place)
  would be named in plain form, like `sort` and `filter`. And since these methods alters the object itself,
  it's only available to mutable instances (variables).
  
@@ -130,27 +130,6 @@ var unorderedNumbers2 = [1, 2, -1, 4, 3, 5]
 unorderedNumbers2.sort()
 unorderedNumbers2
 
-/*:
- 
- ## Array is a generic type
- 
- (Self-Reading) The `Array` type could hold another type as its `Element` type. This concept
- is called **Generic**. We say that Array is a generic collection type. The syntax
- of denoting a generic type is by angle brackets (`<>`).
- 
- Types in properties and methods of a generic type may be changed.
- 
- */
-let emptyDoubleOptional = emptyDoubleArray.first
-let emptyStringOptional = emptyStringArray.first
-// Use "option+click" to see the type of above two constants.
-
-emptyDoubleArray.append(42.0)
-emptyStringArray.append("String")
-
-let removedDouble = emptyDoubleArray.removeLast()
-let removedString = emptyStringArray.removeFirst()
-// Use "option+click" to see the type of above two constants.
 
 /*:
  
@@ -208,7 +187,7 @@ primes.contains(12)
  
  ### Set and Control flows
  
- (Self-Reading) The `for-in` loop is great to enumerate elements in a set
+ The `for-in` loop is great to enumerate elements in a set
  
  */
 for prime in primes {
@@ -310,7 +289,7 @@ let colors = Set(fruitsColors.values)
  
  ### Dictionaries and Control flows
  
- (Self-Reading) The `for-in` loop is great to enumerate key-value pairs in a dictionary.
+ The `for-in` loop is great to enumerate key-value pairs in a dictionary.
  
  */
 for (fruit, color) in fruitsColors {

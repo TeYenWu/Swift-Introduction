@@ -1,5 +1,3 @@
-
-import Foundation
 /*:
  
  # Variables
@@ -82,7 +80,7 @@ let mondayJapanese = monday.3
 /*:
  Elements in tuples could come with labels, like:
  */
-let contact = (name: "Peter", mail: "sodas@icloud.com")
+let contact = (name: "Te-Yen", mail: "teyanwu@gmail.com")
 let contactName = contact.name
 let contactName2 = contact.0
 let contactMail = contact.mail

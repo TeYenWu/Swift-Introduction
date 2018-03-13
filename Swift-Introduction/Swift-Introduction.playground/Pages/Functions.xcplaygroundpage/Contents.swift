@@ -8,19 +8,6 @@
  Every function in Swift has a type, consisting of the function’s parameter types and
  return type.
  */
-func add(x: Int, y: Int) -> Int {
-    return x + y
-}
-let addedResult = add(x: 1, y: 2)
-
-/*:
- In above example, we say there's a function named `add` which accepts two arguments:
- `x` and `y`. Both the two arguments are integers. The `add` function also returns
- an integer result.
- And we called the `add` function with `1` and `2` as parameters, and assign the
- result of this function to a constant called `addedResult`.
- */
-
 //: --------------------------------------------------------------------------------------------------------------------
 /*:
  ## Parameters
@@ -38,6 +25,12 @@ sayHello()
  the function’s parentheses, separated by commas.
  In this case, this function's name is `multiply(x:y:)`
  */
+
+func add(x: Int, y: Int) -> Int {
+    return x + y
+}
+let addedResult = add(x: 1, y: 2)
+
 func multiply(x: Int, y: Int) -> Int {
     return x * y
 }
