@@ -32,7 +32,7 @@ public class BookStore {
         
         // Sort books
         
-        // Retreive authors and prices
+        // Retrieive authors and prices
     
         //assign value to property
         self.books = books
