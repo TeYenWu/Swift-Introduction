@@ -86,7 +86,7 @@ convertToNumber(from: "A", default: -1)
  */
 
 func parseInt(_ string: String) -> (isInteger: Bool, value: Int) {
-    if case let actualNumber? = Int(string) {
+    if let actualNumber = Int(string) {
         return (true, actualNumber)
     } else {
         return (false, 0)

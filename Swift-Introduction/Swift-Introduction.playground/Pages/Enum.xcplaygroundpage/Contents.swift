@@ -118,7 +118,7 @@ func immigtationCheck(person: String, for reason: VisitingReason) -> String {
 }
 immigtationCheck(person: "Peter", for: .travel)
 immigtationCheck(person: "Kate", for: .studying)
-immigtationCheck(person: "James", for: .others("scerect services"))
+immigtationCheck(person: "James", for: .others("secret services"))
 
 
 /*:
