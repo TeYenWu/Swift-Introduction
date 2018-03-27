@@ -11,5 +11,9 @@
         <page name='Struct and Class'/>
         <page name='Extension'/>
         <page name='Protocols'/>
+        <page name='Closures'/>
+        <page name='Generics'/>
+        <page name='Type Casting'/>
+        <page name='Automatic Reference Counting'/>
     </pages>
 </playground>
